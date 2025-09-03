@@ -25,7 +25,7 @@ yargs(hideBin(process.argv)).command({
   },
   handler(argv) {
     saveContact(argv.nama, argv.umur, argv.email);
-    console.log(saveContact);
+    
   }
 })
 .help()

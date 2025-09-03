@@ -23,7 +23,7 @@ export const saveContact = (nama, umur, email) => {
         return false
     }
 
-    if (!validator.isEmail(email)){
+    if (email && !validator.isEmail(email)){
         console.log(chalk.red.inverse.bold(`Email yang anda masukkan tidak valid!`));
         return false
     }
@@ -36,5 +36,12 @@ export const saveContact = (nama, umur, email) => {
     datas.push(data)
 
     fs.writeFileSync('./data/contacts.json', JSON.stringify(datas))
-    console.log(chalk.green.inverse.bold(`Terimakasih ${nama} sudah memasukkan data!`));
+    console.log(chalk.green.inverse.bold('✔ Data kontak berhasil disimpan!'));
+    console.log(chalk.blue('------------------------------'));
+    console.log(chalk.yellow(`Nama: ${nama}`));
+    console.log(chalk.yellow(`Umur: ${umur}`));
+    if (email) {
+        console.log(chalk.yellow(`Email: ${email}`));
+    }
+    console.log(chalk.blue('------------------------------'));
 }
